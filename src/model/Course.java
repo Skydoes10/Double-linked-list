@@ -39,23 +39,16 @@ public class Course {
 				first.setPrev(null);
 				cont++;
 			}
-			while(current != null && current.getName().equalsIgnoreCase(name)) {
-				current.getPrev().setNext(current.getNext());
-				current.getNext().setPrev(current.getPrev());
-				current.setPrev(null);
-				current.setNext(null);
-				current = current.getNext();
-				cont++;
+			while(current != null) {
+				if(current.getName().equalsIgnoreCase(name)) {
+					current.getPrev().setNext(current.getNext());
+					current.getNext().setPrev(current.getPrev());
+					current.setPrev(null);
+					current.setNext(null);
+					current = current.getNext();
+					cont++;
+				}
 			}
-//				if(first.getNext().getName().equalsIgnoreCase(name)) {
-//					current = first.getNext();
-//					current.setPrev(null);
-//					first.setNext(current.getNext());
-//					current.getNext().setPrev(null);
-//					current.setNext(null);
-//					cont++;
-//				}
-			
 		}else {
 			return -1;
 		}
